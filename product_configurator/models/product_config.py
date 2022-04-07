@@ -81,11 +81,13 @@ class ProductConfigDomainLine(models.Model):
     _description = "Domain Line for Config Restrictions"
 
     def _get_domain_conditions(self):
+        """ return domain conditions. Task #9 """
         operators = [("in", "In"), ("not in", "Not In")]
 
         return operators
 
     def _get_domain_operators(self):
+        """ return domain operators. Task #9 """
         andor = [("and", "And"), ("or", "Or")]
 
         return andor
@@ -98,6 +100,7 @@ class ProductConfigDomainLine(models.Model):
             )
 
     def _get_allowed_attribute_value_ids(self):
+        """ return product template attributes and it's values. Task #9 """
         self.ensure_one()
         product_template = self.env["product.template"]
         if self.env.context.get("product_tmpl_id"):

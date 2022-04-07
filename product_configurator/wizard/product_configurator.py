@@ -551,8 +551,9 @@ class ProductConfigurator(models.TransientModel):
         res.update({"arch": etree.tostring(mod_view)})
         return res
 
+    # Remove current_node_path. Task #9
     @api.model
-    def setup_modifiers(self, node, field=None, context=None, current_node_path=None):
+    def setup_modifiers(self, node, field=None, context=None):
         """Processes node attributes and field descriptors to generate
         the ``modifiers`` node attribute and set it on the provided node.
 
@@ -579,7 +580,6 @@ class ProductConfigurator(models.TransientModel):
             node=node,
             modifiers=modifiers,
             context=context,
-            current_node_path=current_node_path,
         )
         transfer_modifiers_to_node(modifiers=modifiers, node=node)
 
@@ -985,6 +985,7 @@ class ProductConfigurator(models.TransientModel):
         :returns : dictionary
         """
         ctx = self.env.context.copy()
+        print("\n\n CCCCCC-----", ctx, wizard)
         ctx.update({"view_cache": view_cache})
         if wizard:
             ctx.update({"wizard_id": wizard.id})

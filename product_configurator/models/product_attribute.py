@@ -26,6 +26,7 @@ class ProductAttribute(models.Model):
 
     @api.onchange("custom_type")
     def onchange_custom_type(self):
+        """ Autoset false value based on conditions. Task #9 """
         if self.custom_type in self._get_nosearch_fields():
             self.search_ok = False
         if self.custom_type not in ("integer", "float"):

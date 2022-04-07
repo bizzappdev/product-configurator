@@ -15,7 +15,7 @@
         "data/product_attribute.xml",
         "data/ir_sequence_data.xml",
         "data/ir_config_parameter_data.xml",
-        "views/assets.xml",
+        # "views/assets.xml",
         "views/product_view.xml",
         "views/product_attribute_view.xml",
         "views/product_config_view.xml",
@@ -36,4 +36,12 @@
     "installable": True,
     "application": True,
     "auto_install": False,
+    'assets': {
+        'web.assets_backend': [
+            'product_configurator/static/scss/form_widget.scss',
+            'product_configurator/static/js/form_widgets.js',
+            'product_configurator/static/js/data_manager',
+            'product_configurator/static/js/relational_fields',
+        ],
+    }
 }

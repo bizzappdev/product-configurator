@@ -130,6 +130,7 @@ class ProductTemplate(models.Model):
     )
 
     def _compute_weight(self):
+        print("\n\n\n 0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0")
         config_products = self.filtered(lambda template: template.config_ok)
         for product in config_products:
             product.weight = product.weight_dummy
@@ -137,6 +138,7 @@ class ProductTemplate(models.Model):
         super(ProductTemplate, standard_products)._compute_weight()
 
     def _set_weight(self):
+        print("\n\n\n 1-1-1-1-1-1-1-1--1-11-1-1-")
         for product_tmpl in self:
             product_tmpl.weight_dummy = product_tmpl.weight
             if not product_tmpl.config_ok:
@@ -197,6 +199,7 @@ class ProductTemplate(models.Model):
         """Prevent configurable products from creating variants as these serve
         only as a template for the product configurator"""
         templates = self.filtered(lambda t: not t.config_ok)
+        print("\n\n\n 2-2-2-2-2-2-2-2-2-2", templates)
         if not templates:
             return None
         return super(ProductTemplate, templates)._create_variant_ids()
@@ -262,6 +265,7 @@ class ProductTemplate(models.Model):
         return res
 
     def configure_product(self):
+        print("\n\n AAAAAAAA------AAAAAAAAAAAA")
         """launches a product configurator wizard with a linked
         template in order to configure new product."""
         return self.with_context(product_tmpl_id_readonly=True).create_config_wizard(
@@ -282,6 +286,7 @@ class ProductTemplate(models.Model):
         if extra_vals:
             wizard_vals.update(extra_vals)
         wizard = wizard_obj.create(wizard_vals)
+        print("\n\n BBBBBB-------BBBBBB", extra_vals, click_next, wizard)
         if click_next:
             action = wizard.action_next_step()
         else:
