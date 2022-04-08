@@ -15,12 +15,19 @@
         "data/product_attribute.xml",
         "data/ir_sequence_data.xml",
         "data/ir_config_parameter_data.xml",
-        "views/assets.xml",
         "views/product_view.xml",
         "views/product_attribute_view.xml",
         "views/product_config_view.xml",
         "wizard/product_configurator_view.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "/product_configurator/static/scss/form_widget.scss",
+            "/product_configurator/static/js/form_widgets.js",
+            "/product_configurator/static/js/data_manager.js",
+            "/product_configurator/static/js/relational_fields.js",
+        ],
+    },
     "demo": [
         "demo/product_template.xml",
         "demo/product_attribute.xml",
